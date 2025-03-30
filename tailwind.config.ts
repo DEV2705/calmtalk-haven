@@ -1,12 +1,13 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
 	darkMode: ["class"],
 	content: [
-		"./pages/**/*.{ts,tsx}",
-		"./components/**/*.{ts,tsx}",
-		"./app/**/*.{ts,tsx}",
-		"./src/**/*.{ts,tsx}",
+		"./pages/**/*.{js,jsx,ts,tsx}",
+		"./components/**/*.{js,jsx,ts,tsx}",
+		"./app/**/*.{js,jsx,ts,tsx}",
+		"./src/**/*.{js,jsx,ts,tsx}",
 	],
 	prefix: "",
 	theme: {
@@ -61,35 +62,38 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+                calmblue: {
+                    DEFAULT: '#3b55c4',
+                    light: '#5a73e5',
+                    dark: '#2a3e9d'
+                },
+                overlay: 'rgba(59, 85, 196, 0.2)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
-			keyframes: {
-				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
-				},
-				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
-				}
-			},
-			animation: {
-				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
-			}
+            animation: {
+                "fade-in": "fade-in 0.5s ease-in-out",
+                "slide-in": "slide-in 0.5s ease-in-out",
+                "slide-up": "slide-up 0.5s ease-in-out",
+            },
+            keyframes: {
+                "fade-in": {
+                    "0%": { opacity: "0" },
+                    "100%": { opacity: "1" }
+                },
+                "slide-in": {
+                    "0%": { transform: "translateX(-10px)", opacity: "0" },
+                    "100%": { transform: "translateX(0)", opacity: "1" }
+                },
+                "slide-up": {
+                    "0%": { transform: "translateY(10px)", opacity: "0" },
+                    "100%": { transform: "translateY(0)", opacity: "1" }
+                }
+            },
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
